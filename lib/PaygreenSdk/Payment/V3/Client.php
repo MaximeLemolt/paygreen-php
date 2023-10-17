@@ -24,6 +24,7 @@ use Paygreen\Sdk\Payment\V3\Request\PaymentOrder\PaymentOrderRequest;
 use Paygreen\Sdk\Payment\V3\Request\PublicKey\PublicKeyRequest;
 use Paygreen\Sdk\Payment\V3\Request\Shop\ShopRequest;
 use Paygreen\Sdk\Payment\V3\Request\Transaction\TransactionRequest;
+use Paygreen\Sdk\Payment\V3\Request\Wallet\WalletRequest;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
@@ -831,6 +832,52 @@ class Client extends \Paygreen\Sdk\Core\Client
             $operationId,
             $operation
         );
+
+        $this->setLastRequest($request);
+
+        $response = $this->sendRequest($request);
+        $this->setLastResponse($response);
+
+        return $response;
+    }
+
+    /**
+     * @link https://developers.paygreen.fr/reference/get_list_wallets
+     *
+     * @param array $filters
+     * @param array $pagination
+     *
+     * @throws Exception
+     *
+     * @return ResponseInterface
+     */
+    public function listWallet($filters = [], $pagination = [])
+    {
+        $request = (new WalletRequest($this->requestFactory, $this->environment))->getListRequest(
+            $filters,
+            $pagination
+        );
+
+        $this->setLastRequest($request);
+
+        $response = $this->sendRequest($request);
+        $this->setLastResponse($response);
+
+        return $response;
+    }
+
+    /**
+     * @link https://developers.paygreen.fr/reference/get_get_wallet
+     *
+     * @param string $walletId
+     *
+     * @throws Exception
+     *
+     * @return ResponseInterface
+     */
+    public function getWallet($walletId)
+    {
+        $request = (new WalletRequest($this->requestFactory, $this->environment))->getGetRequest($walletId);
 
         $this->setLastRequest($request);
 
