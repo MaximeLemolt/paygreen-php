@@ -6,7 +6,7 @@ if [ "${1#-}" != "$1" ]; then
 	set -- php-fpm "$@"
 fi
 
-setfacl -R -m u:www-data:rwX -m u:"$(whoami)":rwX tests/Application/var
+chown -R www-data:www-data tests/Application/var
 
 composer install --prefer-dist --no-progress --no-interaction
 

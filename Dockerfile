@@ -7,7 +7,6 @@ FROM php:${PHP_VERSION}-fpm-alpine AS php
 RUN set -eux; \
 	apk add --no-cache \
 		chromium \
-		acl \
 		libzip-dev \
 		$PHPIZE_DEPS \
 		wget \
