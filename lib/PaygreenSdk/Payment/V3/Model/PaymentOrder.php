@@ -105,6 +105,11 @@ class PaymentOrder implements PaymentOrderInterface
     private $metadata;
 
     /**
+     * @var bool
+     */
+    private $plbs;
+
+    /**
      * @return string
      */
     public function getId()
@@ -510,6 +515,25 @@ class PaymentOrder implements PaymentOrderInterface
     public function setCancelUrl($cancelUrl)
     {
         $this->cancelUrl = $cancelUrl;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getPlbs()
+    {
+        return $this->plbs;
+    }
+
+    /**
+     * @param bool $plbs
+     * @return self
+     */
+    public function setPlbs($plbs)
+    {
+        $this->plbs = $plbs;
 
         return $this;
     }

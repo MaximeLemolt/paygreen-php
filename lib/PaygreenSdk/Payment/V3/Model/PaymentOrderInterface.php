@@ -217,4 +217,14 @@ interface PaymentOrderInterface
      * @param int $fees
      */
     public function setFees($fees);
+
+    /**
+     * @return bool
+     */
+    public function getPlbs();
+
+    /**
+     * @param bool $plbs
+     */
+    public function setPlbs($plbs);
 }

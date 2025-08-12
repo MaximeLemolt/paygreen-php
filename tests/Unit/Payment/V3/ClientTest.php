@@ -191,6 +191,7 @@ final class ClientTest extends TestCase
         $paymentOrder->setMetadata(array('cart_id' => 15));
         $paymentOrder->setCancelUrl('https://www.heypongo.com?cancel');
         $paymentOrder->setReturnUrl('https://www.heypongo.com?success');
+        $paymentOrder->setPlbs(true);
 
         $this->client->createPaymentOrder($paymentOrder);
 
@@ -211,6 +212,7 @@ final class ClientTest extends TestCase
         $this->assertEquals($paymentOrder->getMetadata(), (array)$content->metadata);
         $this->assertEquals($paymentOrder->getCancelUrl(), 'https://www.heypongo.com?cancel');
         $this->assertEquals($paymentOrder->getReturnUrl(), 'https://www.heypongo.com?success');
+        $this->assertEquals($paymentOrder->getPlbs(), true);
     }
 
     public function testRequestCreatePaymentOrderMarketPlace()

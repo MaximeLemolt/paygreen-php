@@ -120,6 +120,7 @@ $paymentOrder->setAutoCapture(true);
 $paymentOrder->setCurrency('eur');
 $paymentOrder->setShippingAddress($address);
 $paymentOrder->setDescription('A test payment');
+// For plbs : $paymentOrder->setPlbs(true);
 
 $response = $client->createPaymentOrder($paymentOrder);
 ```

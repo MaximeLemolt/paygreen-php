@@ -80,7 +80,8 @@ class PaymentOrderRequest extends \Paygreen\Sdk\Core\Request\Request
             'return_url' => $paymentOrder->getReturnUrl(),
             'shop_id' => $paymentOrder->getShopId(),
             'metadata' => $paymentOrder->getMetadata(),
-            'fees' => $paymentOrder->getFees()
+            'fees' => $paymentOrder->getFees(),
+            'plbs' => $paymentOrder->getPlbs(),
         ];
 
         if (null !== $paymentOrder->getShippingAddress()) {
